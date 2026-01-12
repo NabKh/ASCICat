@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo/logo.png" alt="ASCICat Logo" width="280"/>
+  <img src="https://raw.githubusercontent.com/NabKh/ASCICat/main/logo/logo.png" alt="ASCICat Logo" width="280"/>
 </p>
 
 <h3 align="center">Activity-Stability-Cost Integrated Catalyst Discovery</h3>
