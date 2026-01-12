@@ -1,0 +1,258 @@
+# ASCICat Documentation Configuration
+# MkDocs with Material theme for GitHub Pages
+# Domain: ascicat.io
+
+site_name: ASCICat
+site_url: https://ascicat.io
+site_author: N. Khossossi
+site_description: >-
+  Activity-Stability-Cost Integrated Catalyst Discovery Framework.
+  A unified multi-objective framework for translating computational
+  catalyst data into reproducible, experimentally-actionable rankings.
+
+# Repository
+repo_name: NabKh/ASCICat
+repo_url: https://github.com/NabKh/ASCICat
+edit_uri: edit/master/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 N. Khossossi, DIFFER
+
+# Theme Configuration
+theme:
+  name: material
+  custom_dir: docs/overrides
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+  icon:
+    repo: fontawesome/brands/github
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - minify:
+      minify_html: true
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_category_heading: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            docstring_style: numpy
+            docstring_section_style: spacy
+            members_order: source
+            group_by_category: true
+            show_if_no_docstring: false
+            annotations_path: brief
+            signature_crossrefs: true
+
+# Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: NabKh
+      repo: ASCICat
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/NabKh/ASCICat
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/ascicat/
+    - icon: fontawesome/solid/envelope
+      link: mailto:n.khossossi@differ.nl
+
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+  version:
+    provider: mike
+
+  generator: false
+
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences,
+      as well as to measure the effectiveness of our documentation.
+
+# Extra CSS and JavaScript
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Navigation
+nav:
+  - Home: index.md
+
+  - Getting Started:
+    - getting-started/index.md
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - First Analysis: getting-started/first-analysis.md
+
+  - User Guide:
+    - user-guide/index.md
+    - Core Concepts: user-guide/concepts.md
+    - Scoring System:
+      - Overview: user-guide/scoring/index.md
+      - Activity Scoring: user-guide/scoring/activity.md
+      - Stability Scoring: user-guide/scoring/stability.md
+      - Cost Scoring: user-guide/scoring/cost.md
+      - ASCI Integration: user-guide/scoring/asci.md
+    - Reactions:
+      - Overview: user-guide/reactions/index.md
+      - HER: user-guide/reactions/her.md
+      - CO2RR: user-guide/reactions/co2rr.md
+      - Custom Reactions: user-guide/reactions/custom.md
+    - Visualization: user-guide/visualization.md
+    - Sensitivity Analysis: user-guide/sensitivity.md
+    - Data Format: user-guide/data-format.md
+
+  - Tutorials:
+    - tutorials/index.md
+    - HER Catalyst Screening: tutorials/her-screening.md
+    - CO2RR Multi-Pathway Analysis: tutorials/co2rr-analysis.md
+    - Figure Generation: tutorials/figure-generation.md
+    - Sensitivity Analysis: tutorials/sensitivity-analysis.md
+    - ASCICat vs Pareto: tutorials/ascicat-vs-pareto.md
+
+  - API Reference:
+    - api/index.md
+    - ASCICalculator: api/calculator.md
+    - Scoring Functions: api/scoring.md
+    - Visualizer: api/visualizer.md
+    - Analyzer: api/analyzer.md
+    - Sensitivity: api/sensitivity.md
+    - Configuration: api/config.md
+    - Utilities: api/utils.md
+
+  - CLI & GUI:
+    - cli-gui/index.md
+    - Command Line Interface: cli-gui/cli.md
+    - Graphical Interface: cli-gui/gui.md
+
+  - Science:
+    - science/index.md
+    - Theoretical Background: science/theory.md
+    - Sabatier Principle: science/sabatier.md
+    - Multi-Objective Optimization: science/optimization.md
+    - Comparison with Pareto: science/pareto-comparison.md
+
+  - About:
+    - about/index.md
+    - Citation: about/citation.md
+    - Contributing: about/contributing.md
+    - Changelog: about/changelog.md
+    - License: about/license.md
